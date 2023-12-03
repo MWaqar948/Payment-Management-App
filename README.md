@@ -7,7 +7,7 @@ It is a simple payment management app written in Laravel
 Clone this app repository
 
 ```bash
-git clone http://github.com/payment-app
+git clone http://github.com/Payment-Management-App
 ```
 Install composer dependencies
 
