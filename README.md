@@ -36,7 +36,7 @@ php artisan key:generate
 
 Run migrations
 ```bash
-php artisan migrate
+php artisan migrate --seed
 ```
 
 Install npm dependencies

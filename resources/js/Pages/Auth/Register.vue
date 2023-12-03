@@ -90,7 +90,13 @@
             let error = ref('');
 
             const register = async () => {
-                await axios.post('/api/auth/register', form).then(res => {
+                const requestData = toRaw(form);
+
+                if(requestData.doctor_fee_amount == ''){
+                    delete requestData.doctor_fee_amount;
+                }
+
+                await axios.post('/api/auth/register', requestData).then(res => {
                     error.value='';
                     store.dispatch('setToken', res.data.token);
                     store.dispatch('setUser', res.data.user);
