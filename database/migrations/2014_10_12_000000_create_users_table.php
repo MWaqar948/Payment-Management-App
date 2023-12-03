@@ -18,8 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             // $table->decimal('total_amount', 10, 2);
-            // $table->decimal('doctor_fee', 10, 2);
-            $table->unsignedBigInteger('role_id');
+            // $table->decimal('doctor_fee_amount', 10, 2);
             $table->rememberToken();
             $table->timestamps();
         });

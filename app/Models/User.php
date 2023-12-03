@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
+        'stripe_account_id',
+        'stripe_price_id',
+        'doctor_fee_amount',
     ];
 
     /**
@@ -42,4 +46,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function role(){
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
+
+    // appending client name
+    public function scopeRoleName($query)
+    {
+        $query->addSelect([
+            'role_name' => Role::select('name')->whereColumn('id', 'role_id')->take(1),
+        ]);
+    }
+
+    public function patientAppointments(){
+        return $this->hasMany(Appointment::class, 'client_id', 'id');
+    }
 }
